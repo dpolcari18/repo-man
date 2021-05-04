@@ -1,18 +1,22 @@
 import './App.css';
 
 // react router
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // react-bootstrap
 import Container from 'react-bootstrap/Container'
 
+// components
+import Login from './components/Login'
+import NotFound from './components/NotFound'
+
 function App() {
   return (
     <Router>
-      <Container>
-        <Route exact patch='/' render={() => <Login />} />
-        <div>TESTING</div>
-      </Container>
+      <Switch>
+          <Route exact path='/' component={Login} />
+          <Route path='*' component={NotFound} />
+      </Switch>
     </Router>
   );
 }
