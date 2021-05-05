@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 
 // react bootstrap
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 // components
 import RepoComponent from '../components/RepoComponent'
@@ -37,11 +39,27 @@ const Home = () => {
         const repos = await fetchUser.json()
         
         dispatch({ type: 'ADD_REPOS', repos: repos})
-    }, [])
+    }, [page])
+
+    const handlePrevious = () => {
+        if (page === 1) {return} else {setPage(page - 1)}
+    }
+
+    const handleNext = () => {
+        if (repos.length < 100) {return} else  {setPage(page + 1)}
+    }
 
     return (
         <Container>
             {repos.map(repo => <RepoComponent key={repo.id} repo={repo} /> )}
+            <ButtonGroup>
+                <Button onClick={() => handlePrevious()} disabled={page === 1}>
+                    Previous
+                </Button>
+                <Button onClick={() => handleNext()} disabled={repos.length < 100}>
+                    Next
+                </Button>
+            </ButtonGroup>
         </Container>
     )
 }

@@ -1,10 +1,13 @@
 ## Installation
 
 * Fork and Clone Repo
-* In base directory touch .env
+* In base directory touch a .env file
 * Add .env to .gitignore file and commit
-* In .env add a username variable set equal to github username
-* In .env add a oauth variable set equal to github oauth token 
+* In .env add a variable named REACT_APP_USERNAME set equal to github username
+* Before moving on follow <a href='https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token'>steps</a> on github to create OAuth token
+* In .env add a variable named REACT_APP_OAUTH_TOKEN set equal to github oauth token 
+* In console run npm start
+
 
 
 
