@@ -1,7 +1,10 @@
 ## Installation
 
 * Fork and Clone Repo
-* 
+* In base directory touch .env
+* Add .env to .gitignore file and commit
+* In .env add a username variable set equal to github username
+* In .env add a oauth variable set equal to github oauth token 
 
 
 
