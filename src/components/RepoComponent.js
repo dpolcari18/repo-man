@@ -6,7 +6,11 @@ import Card from 'react-bootstrap/Card'
 const RepoComponent = ({ repo }) => {
     return(
         <Card>
-            {repo.name}
+            <div>
+                <input type='checkbox'
+                       onClick={dispatc({})}
+                />  {repo.name}
+            </div>
         </Card>
     )
 }
