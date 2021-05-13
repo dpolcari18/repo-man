@@ -24,18 +24,21 @@ const Pagination = () => {
     const [page, setPage] = useState(1)
 
     // fetch repos
-    useEffect(async () => {
-
-        const fetchObj = {
-            Headers: {
-                "Authorization": `token ${TOKEN}`
+    useEffect(() => {
+        const fetchRepos = async () => {     
+            const fetchObj = {
+                Headers: {
+                    "Authorization": `token ${TOKEN}`
+                }
             }
+    
+            const fetchUser = await fetch(API_ENDPOINT + '/users/' + USERNAME + `/repos?page=${page}&per_page=100`, fetchObj)
+            const repos = await fetchUser.json()
+            
+            dispatch({ type: 'ADD_REPOS', repos: repos})
         }
-
-        const fetchUser = await fetch(API_ENDPOINT + '/users/' + USERNAME + `/repos?page=${page}&per_page=100`)
-        const repos = await fetchUser.json()
         
-        dispatch({ type: 'ADD_REPOS', repos: repos})
+        fetchRepos()
     }, [page])
 
     // move to previous page

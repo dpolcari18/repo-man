@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 // redux
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // react bootstrap
 import Container from 'react-bootstrap/Container'
@@ -19,6 +19,9 @@ const Home = () => {
 
     return (
         <Container>
+            <ButtonGroup>
+                <DeleteButton />
+            </ButtonGroup>
             {repos.map(repo => <RepoComponent key={repo.id} repo={repo} /> )}
             <ButtonGroup>
                 <Pagination/>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 // redux
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 // react bootstrap
 import Card from 'react-bootstrap/Card'
