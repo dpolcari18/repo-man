@@ -1,7 +1,7 @@
 import React from 'react'
 
 // redux
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // react bootstrap
 import Card from 'react-bootstrap/Card'
@@ -10,13 +10,23 @@ const RepoComponent = ({ repo }) => {
 
     // redux hooks
     const dispatch = useDispatch()
+    const checkedRepos = useSelector(state => state.repos.checkedRepos)
+
+    const handleClick = (e) => {
+        if (checkedRepos.includes(e.target.value)) {
+            dispatch({type: 'REMOVE_CHECKED_REPO', checkedRepo: e.target.value})
+        } else {
+            dispatch({type: 'ADD_CHECKED_REPO', checkedRepo: e.target.value})
+        }
+    }
 
     return(
         <Card>
             <div>
                 <input type='checkbox'
-                       onClick={() => dispatch({type: 'ADD_CHECKED_REPO', checkedRepo: repo.name})}
-                />  {repo.name}
+                       value={repo.name}
+                       onClick={(e) => handleClick(e)}
+                />   {repo.name}
             </div>
         </Card>
     )
