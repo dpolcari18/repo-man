@@ -39,7 +39,7 @@ const Pagination = () => {
         }
         
         fetchRepos()
-    }, [page])
+    }, [page, repos])
 
     // move to previous page
     const handlePrevious = () => {

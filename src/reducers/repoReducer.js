@@ -8,6 +8,11 @@ const repoReducer = ( state = {
                 ...state,
                 repos: action.repos
             }
+        case 'REMOVE_REPOS': 
+            return {
+                ...state, 
+                repos: state.repos.filter(repo => !state.checkedRepos.includes(repo.name))
+            }            
         case 'ADD_CHECKED_REPO':
             return {
                 ...state,
@@ -17,6 +22,11 @@ const repoReducer = ( state = {
             return {
                 ...state,
                 checkedRepos: state.checkedRepos.filter(repo => repo !== action.checkedRepo)
+            }
+        case 'CLEAR_CHECKED_REPOS':
+            return {
+                ...state,
+                checkedRepos: []
             }
         default: 
             return state
